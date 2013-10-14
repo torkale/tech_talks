@@ -1,0 +1,44 @@
+<link rel="import" href="talk.html">
+<link rel="import" href="../bower_components/polymer-elements/polymer-jsonp/polymer-jsonp.html">
+<link rel="import" href="flatiron-director/flatiron-director.html">
+<polymer-element name="catalog-element"  attributes="">
+  <template>
+    <style>
+      @host { :scope {display: block;} }
+    </style>
+    <div class="row">
+      <h1><a href="/#">QuickLaunch Tech Talks</a></h1>
+      <flatiron-director route="{{route}}" autoHash></flatiron-director>
+      <h2>Talks</h2>
+      <!-- Table of contents -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Offered By</th>
+            <th>Votes</th>
+            <th>When</th>
+          </tr>
+        <tbody>
+          <template repeat="{{talk in talks.feed.entry}}">
+            <tr>
+              <td>{{talk.gsx$topic.$t}}</td>
+              <td>{{talk.gsx$offeredby.$t}}</td>
+              <td><input type="numeric" value="{{talk.gsx$votesdontfukincheat.$t}}" ></td>
+              <td>{{talk.gsx$date.$t}}</td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+    <polymer-jsonp auto url="https://spreadsheets.google.com/feeds/list/0AuCoy10WlWcadEZkZzdpcG9CTmhZX0FOWFNBN1p1cFE/od6/public/values?alt=json-in-script&callback=" response="{{talks}}"></polymer-jsonp>
+  </template>
+  <script>
+    Polymer('catalog-element', {
+      created: function() {},
+      enteredView: function() { },
+      leftView: function() { },
+      attributeChanged: function(attrName, oldVal, newVal) { alert(newVal)}
+    });
+  </script>
+</polymer-element>

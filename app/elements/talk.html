@@ -1,0 +1,23 @@
+<polymer-element name="talk-element" attributes="talk">
+  <template>
+    <style>
+      @host { :scope {display: block;} }
+    </style>
+    <template>
+      <tr>
+        <td>{{talk.gsx$topic.$t}}</td>
+        <td>{{talk.gsx$offeredby.$t}}</td>
+        <td>{{talk.gsx$votesdontfukincheat.$t}}</td>
+        <td>{{talk.gsx$date.$t}}</td>
+      </tr>
+    </template>
+  </template>
+  <script>
+    Polymer('talk-element', {
+      created: function() { },
+      enteredView: function() { },
+      leftView: function() { },
+      attributeChanged: function(attrName, oldVal, newVal) { }
+    });
+  </script>
+</polymer-element>
